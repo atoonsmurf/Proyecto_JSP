@@ -71,11 +71,7 @@
 </div>
 
 <!-- Javascript -->
-<script>
-$(document).on("click",".btn-close",function(){
-	alert("hola");
-}
-</script>
+
 		<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 	    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
