@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+/* Acerca de */
+
+/* Menu */
+
+.link
+{ width: 367px !important; }
+
+/* Contenedor - Acerca de */
+
+.version h3 { text-align: center;  color: purple; padding-top: 10px; }
+
+.version p { text-align: center;  color: black; }
+
+.autores p { text-align: center;  color: black; }

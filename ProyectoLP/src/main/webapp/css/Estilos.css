@@ -1,0 +1,220 @@
+@charset "ISO-8859-1";
+body
+{
+	background-color: #ffe390;
+	font-family: 'Cabin', sans-serif;
+	text-decoration:none;
+	width:100%;
+	padding: 0px;
+}
+
+.navbar.navbar-expand-sm.bg-dark.navbar-dark { background-color: #ffe06f !important; }
+
+.navbar-dark .navbar-nav .nav-link {color:#472605 !important ;}
+
+.navbar-dark .navbar-brand {color:#472605 !important ;}
+
+.titulo h1
+{
+	color: white;
+	text-align: center;
+	/*margin: 10px;*/
+	font-family: 'Itim', cursive;
+	width: 100%;
+    padding: 10px 0px;
+    float: left;
+    display: block;
+    font-size: 2.2rem;
+}
+
+div .contenedor
+{
+	height: 600px !important;
+    border-radius: 10px;
+    padding: 0px !important;
+   /* margin: 5em auto !important; */
+}
+
+div .titulo 
+{
+	width: 100%;
+	text-align: center;
+	/*float: right;*/
+    display: inline-block;
+    background-color:#f27405;
+    border-radius: 10px 10px 0px 0px;
+}
+
+div .menu 
+{ 
+	width: 31.4%; 
+	border-radius: 10px 0px 0px 10px;
+	float: left;
+    height: 100%;
+    background-color: beige;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+p { font-family: 'Cabin', sans-serif; }
+
+a { color: #0D0D0D; font-size: 21px; }
+
+a:hover
+{ text-decoration: none;
+   color: white; }
+
+/*Main Colors*/
+/* Change base color for each links*/
+body {
+  margin:0px;
+}
+
+#list {
+  width: 396px;
+  margin: 170px auto;
+  display: block;
+  padding: 0px;
+}
+
+.link {
+  background: #F2B705;
+  width: 372px;
+  height: 60px;
+  box-shadow: 1em 0px #F29F05, inset 0 1px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  display: block;
+  transition: box-shadow 0.4s ease, padding 0.25974s ease;
+}
+
+.link span {
+  display: block;
+  width: 80px;
+  height: 60px;
+  background: #eee;
+  float: left;
+  font-size: 2.48em;
+  line-height: 1.5em;
+  margin: -1.48em auto;
+  text-align: center;
+  color: #34495e;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0.5em 0px #F29F05, inset 0 1px 0 rgba(0, 0, 0, 0.05);
+  transform: rotate(0deg);
+  transition: z-index 0s ease 0.25974s;
+}
+
+.link p:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 1em -1.7em;
+  background: #2c3e50;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+
+.link p {
+  font-size: 1.38em;
+  width: 500px;
+  display: block;
+  float: left;
+  padding-left: 5em;
+  padding-top: 0;
+  margin: 0;
+  line-height: 2.7;
+  color: #eee;
+  font-family: 'Cabin';
+  transition: 0.4s ease;
+}
+
+span img {
+  width: 45px;
+  height: 45px;
+}
+
+.link:hover {
+  background: #16a085;
+  box-shadow: 1em 0px #1abc9c, inset 0 1px 0 rgba(0, 0, 0, 0.05);
+  padding-right: 1em;
+}
+.link:hover span {
+  color: #16a085;
+  box-shadow: 0.5em 0px #1abc9c;
+  z-index: 0;
+}
+.link:hover p {
+  padding-left: 6em;
+  color: #ecf0f1;
+}
+.link:hover p:before {
+  background: #1abc9c;
+  margin: 1em -2.7em;
+  opacity: 1;
+}
+
+.link:nth-child(2):hover {
+  background: #27ae60;
+  box-shadow: 1em 0px #2ecc71, inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+.link:nth-child(2):hover span {
+  color: #27ae60;
+  box-shadow: 0.5em 0px #2ecc71;
+}
+.link:nth-child(2):hover p:before {
+  background: #2ecc71;
+}
+
+.link:nth-child(3):hover {
+  background: #2980b9;
+  box-shadow: 1em 0px #3498db, inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+.link:nth-child(3):hover span {
+  color: #2980b9;
+  box-shadow: 0.5em 0px #3498db;
+}
+.link:nth-child(3):hover p:before {
+  background: #3498db;
+}
+
+.link:nth-child(4):hover {
+  background: #d35400;
+  box-shadow: 1em 0px #e67e22, inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+.link:nth-child(4):hover span {
+  color: #d35400;
+  box-shadow: 0.5em 0px #e67e22;
+}
+.link:nth-child(4):hover p:before {
+  background: #e67e22;
+}
+
+.link:nth-child(5):hover {
+  background: #c0392b;
+  box-shadow: 1em 0px #e74c3c, inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+.link:nth-child(5):hover span {
+  color: #c0392b;
+  box-shadow: 0.5em 0px #e74c3c;
+}
+.link:nth-child(5):hover p:before {
+  background: #e74c3c;
+}
+
+.pagination a
+{
+	font-size: 18px !important;
+}
+
+.pagination .page-link
+{
+	padding: 0.35rem 0.75rem !important;
+}
+
+
+

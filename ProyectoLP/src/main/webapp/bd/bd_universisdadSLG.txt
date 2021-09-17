@@ -1,0 +1,211 @@
+drop database if exists bd_universidadSLG;
+create database bd_universidadSLG ;
+use bd_universidadSLG;
+
+create table trabajador (
+cod_trab    int auto_increment  not null,
+nom_trab    varchar(30),
+ape_trab    varchar(30),
+tipo_doc    varchar(20),
+nro_doc int not null,
+constraint PKTrabajador primary key (cod_trab)
+);
+alter table trabajador auto_increment=101;
+-- DROP TABLE trabajador;
+
+INSERT INTO trabajador VALUES (null, 'Mario', 'Contreras Vela','DNI', 12345678) ;
+INSERT INTO trabajador VALUES (null, 'Lucia', 'Bustamante Zegarra','DNI', 87654321) ;
+INSERT INTO trabajador VALUES (null, 'Juan', 'Sanchez Alcantara','DNI', 23456781) ;
+INSERT INTO trabajador VALUES (null, 'Antonella', 'Garcia Navarro','DNI', 56781234) ;
+INSERT INTO trabajador VALUES (null, 'Victor', 'Espinoza Hurtado','DNI', 91236789) ;
+
+create table solxbonificacion (
+nrosolbon   int auto_increment  not null,
+cod_trab        int,
+fecha_sol   date,
+detalle_sol varchar(300),
+constraint PKSolB primary key (nrosolbon),
+constraint FKSolB foreign key (cod_trab) references trabajador(cod_trab)        
+);
+alter table solxbonificacion auto_increment=1001;
+-- DROP TABLE solxbonificacion;
+
+INSERT INTO solxbonificacion VALUES (null, 102, '2021-04-14','Solicitud de Bonificacion Personal') ;
+INSERT INTO solxbonificacion VALUES (null, 103, '2021-05-10','Solicitud de Bonificacion Personal') ;
+INSERT INTO solxbonificacion VALUES (null, 104, '2021-02-08','Solicitud de Bonificacion Personal') ;
+INSERT INTO solxbonificacion VALUES (null, 105, '2021-03-16','Solicitud de Bonificacion Personal') ;
+
+create table solxcapacitacion(
+nrosolcap int auto_increment    not null,
+cod_trab int,
+fecha_sol date,
+tipo_cap varchar(25),
+duracion_cap varchar(10),
+constraint PKSolC primary key (nrosolcap),
+constraint FKSolC foreign key (cod_trab) references trabajador(cod_trab)        
+);
+alter table solxcapacitacion auto_increment=2001;
+-- DROP TABLE IF exists solxcapacitacion;
+
+DROP TABLE IF EXISTS `tb_estado`;
+
+CREATE TABLE `tb_estado` (
+  `cod_estado` int NOT NULL,
+  `nom_estado` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`cod_estado`)
+) ;
+
+LOCK TABLES `tb_estado` WRITE;
+INSERT INTO `tb_estado` VALUES (1,'Pendiente'),(2,'En Proceso'),(3,'Finalizado');
+UNLOCK TABLES;
+
+create table informexcapacitacion(
+codinfcap       int auto_increment  not null,
+des_informe varchar(300),
+fecha_informe date,
+nrosolcap       int,
+constraint PKInfC primary key (codinfcap),
+constraint FKInfC foreign key (nrosolcap) references solxcapacitacion(nrosolcap)
+);
+alter table informexcapacitacion auto_increment=3001;
+-- DROP TABLE IF EXISTS informexcapacitacion;
+
+INSERT INTO informexcapacitacion VALUES (null, 'Informe de Capacitacion Oficializada actualizado', '2021-04-14', 2002) ;
+INSERT INTO informexcapacitacion VALUES (null, 'Informe de Capacitacion Oficializada actualizado', '2021-05-10', 2003) ;
+INSERT INTO informexcapacitacion VALUES (null, 'Informe de Capacitacion Oficializada actualizado', '2021-02-08', 2004) ;
+-- INSERT INTO informexcapacitacion VALUES (null, 'Informe de Capacitacion Oficializada actualizado', '2021-03-16', 2005) ;
+-- INSERT INTO informexcapacitacion VALUES (null, 'Informe de Capacitacion Oficializada actualizado', '2021-01-22', 2006) ;
+
+create table expbonificacion(
+nroexpbon       int auto_increment  not null,
+obs_bon varchar(300),
+fecha_exp date,
+nrosolbon       int,
+constraint PKExpB primary key (nroexpbon),
+constraint FKExpB foreign key (nrosolbon) references solxbonificacion(nrosolbon)
+);
+alter table expbonificacion auto_increment=7001;
+-- DROP TABLE IF EXISTS expbonificacion;
+
+INSERT INTO expbonificacion VALUES (null, 'Expediente correctamente presentado', '2021-04-14', 1002) ;
+INSERT INTO expbonificacion VALUES (null, 'Expediente correctamente presentado', '2021-06-24', 1003) ;
+INSERT INTO expbonificacion VALUES (null, 'Expediente correctamente presentado', '2021-02-08', 1004) ;
+-- INSERT INTO expbonificacion VALUES (null, 'Expediente correctamente presentado', '2021-05-21', 1005) ;
+-- INSERT INTO expbonificacion VALUES (null, 'Expediente correctamente presentado', '2021-03-12', 1006) ;
+
+create table expcapacitacion(
+nroexpcap       int auto_increment  not null,
+obs_cap varchar(300),
+fecha_exp date,
+nrosolcap       int,
+constraint PKExpC primary key (nroexpcap),
+constraint FKExpC foreign key (nrosolcap) references solxcapacitacion(nrosolcap)
+);
+alter table expcapacitacion auto_increment=8001;
+-- DROP TABLE IF EXISTS expcapacitacion;
+
+INSERT INTO expcapacitacion VALUES (null, 'Expediente correctamente presentado', '2021-04-14', 2002) ;
+INSERT INTO expcapacitacion VALUES (null, 'Expediente correctamente presentado', '2021-06-24', 2003) ;
+INSERT INTO expcapacitacion VALUES (null, 'Expediente correctamente presentado', '2021-02-08', 2004) ;
+-- INSERT INTO expcapacitacion VALUES (null, 'Expediente correctamente presentado', '2021-05-21', 2005) ;
+-- INSERT INTO expcapacitacion VALUES (null, 'Expediente correctamente presentado', '2021-03-12', 2006) ;
+
+create table informexbonificacion(
+codinfbon       int auto_increment  not null,
+detalle_inf     varchar(300),
+fecha_inf date,
+nrosolbon       int,
+constraint PKInfB primary key (codinfbon),
+constraint FKInfB foreign key (nrosolbon) references solxbonificacion(nrosolbon)
+);
+alter table informexbonificacion auto_increment=4001;
+-- DROP TABLE informexbonificacion;
+
+INSERT INTO informexbonificacion VALUES (null, 'Informe correctamente presentado', '2021-04-14', 1002) ;
+INSERT INTO informexbonificacion VALUES (null, 'Informe correctamente presentado', '2021-06-24', 1003) ;
+INSERT INTO informexbonificacion VALUES (null, 'Informe correctamente presentado', '2021-02-08', 1004) ;
+-- INSERT INTO informexbonificacion VALUES (null, 'Informe correctamente presentado', '2021-05-21', 1005) ;
+-- INSERT INTO informexbonificacion VALUES (null, 'Informe correctamente presentado', '2021-03-12', 1006) ;
+
+create table resxcapacitacion(
+codresolcap     int auto_increment  not null,
+detalle_resol           varchar(300),
+fecha_resol     date,
+nrosolcap       int,
+constraint PKResC primary key (codresolcap),
+constraint FKResC foreign key (nrosolcap) references solxcapacitacion(nrosolcap)
+);
+alter table resxcapacitacion auto_increment=5001;
+-- DROP TABLE IF EXISTS resxcapacitacion;
+
+INSERT INTO resxcapacitacion VALUES (null, 'Resolucion correctamente presentado', '2021-04-14', 2002) ;
+INSERT INTO resxcapacitacion VALUES (null, 'Resolucion correctamente presentado', '2021-06-24', 2003) ;
+INSERT INTO resxcapacitacion VALUES (null, 'Resolucion correctamente presentado', '2021-02-08', 2004) ;
+-- INSERT INTO resxcapacitacion VALUES (null, 'Resolucion correctamente presentado', '2021-05-21', 2005) ;
+-- INSERT INTO resxcapacitacion VALUES (null, 'Resolucion correctamente presentado', '2021-03-12', 2006) ;
+
+create table resxbonificacion(
+codresolbon     int auto_increment  not null,
+detalle_resol           varchar(300),
+fecha_resol     date,
+nrosolbon       int,
+constraint PKResB primary key (codresolbon),
+constraint FKResB foreign key (nrosolbon) references solxbonificacion(nrosolbon)
+);
+alter table resxbonificacion auto_increment=6001;
+-- DROP TABLE resxbonificacion;
+
+INSERT INTO resxbonificacion VALUES (null, 'Resolucion correctamente presentado', '2021-04-14', 1002) ;
+INSERT INTO resxbonificacion VALUES (null, 'Resolucion correctamente presentado', '2021-06-24', 1003) ;
+INSERT INTO resxbonificacion VALUES (null, 'Resolucion correctamente presentado', '2021-02-08', 1004) ;
+-- INSERT INTO resxbonificacion VALUES (null, 'Resolucion correctamente presentado', '2021-05-21', 1005) ;
+-- INSERT INTO resxbonificacion VALUES (null, 'Resolucion correctamente presentado', '2021-03-12', 1006) ;
+
+CREATE TABLE tb_menu (
+  cod_men int AUTO_INCREMENT not null,
+  des_men varchar(30) DEFAULT NULL,
+  url_men varchar(400) DEFAULT NULL,
+  constraint PKmenu PRIMARY KEY (cod_men)
+) ;
+-- drop table tb_menu; 
+alter table tb_menu AUTO_INCREMENT= 5;
+
+INSERT INTO tb_menu VALUES (null,'Inicio','Inicio.jsp'),
+(null,'Nosotros','Nosotros.jsp'),
+(null,'Bonificación Personal','BonificacionP.jsp'),
+(null,'Capacitación Oficializada','ServletSolicitud?ACCION=LISTAR'),
+(null,'Acerca de','Acerca.jsp');
+
+CREATE TABLE tb_usuario (
+  cod_usu int AUTO_INCREMENT not null,
+  log_usu varchar(15) DEFAULT NULL,
+  pas_usu varchar(15) DEFAULT NULL,
+  nom_usu varchar(30) DEFAULT NULL,
+  ape_usu varchar(50) DEFAULT NULL,
+  constraint PKusu PRIMARY KEY (cod_usu)
+) ;
+alter table tb_usuario AUTO_INCREMENT= 10;
+-- drop table tb_usuario;
+
+INSERT INTO tb_usuario VALUES (null,'admin','admin123','Humberto','Gonzales Torres'),
+(null,'docente','docente123','Pedro','Huerta Rondan'),
+(null,'rector','rector123','Luis','Aguilar Loayza'),
+(null,'rosa','rosa','Rosa','Castillo Perez');
+-- select * from tb_usuario;
+CREATE TABLE `tb_acceso` (
+  `cod_men` int NOT NULL,
+  `cod_usu` int NOT NULL,
+  PRIMARY KEY (`cod_men`,`cod_usu`),
+  KEY `cod_usu` (`cod_usu`),
+  CONSTRAINT `tb_acceso_ibfk_1` FOREIGN KEY (`cod_men`) REFERENCES `tb_menu` (`cod_men`),
+  CONSTRAINT `tb_acceso_ibfk_2` FOREIGN KEY (`cod_usu`) REFERENCES `tb_usuario` (`cod_usu`)
+) ;
+-- drop table tb_acceso;
+LOCK TABLES `tb_acceso` WRITE;
+INSERT INTO `tb_acceso` VALUES (5,10),(6,10),(7,10),(8,10),(5,11),(6,11),(7,11),(8,11),(6,12),(8,12),(6,13),(8,13);
+UNLOCK TABLES;
+
+/*Consulta para el metodo "traerMenus" */
+select a.cod_men, m.des_men, m.url_men
+from tb_acceso a join tb_menu m
+on a.cod_men= m.cod_men where a.cod_usu=10;

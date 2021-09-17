@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+/* Bonificación Personal */
+
+/* Menu */
+
+.link
+{ width: 367px !important; }
+
+/* Contenedor - Bonificación Personal */
+
+.titulo
+{
+	background-color: rgb(255, 128, 64) !important;
+}
